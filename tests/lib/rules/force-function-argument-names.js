@@ -1,6 +1,6 @@
 'use strict'
 
-const rule = require('../rules/force-function-argument-names')
+const rule = require('../../../lib/rules/force-function-argument-names')
 const RuleTester = require('eslint').RuleTester
 const ruleTester = new RuleTester({
 	parserOptions: {

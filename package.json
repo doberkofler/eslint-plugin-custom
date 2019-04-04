@@ -1,7 +1,7 @@
 {
-  "name": "eslint-plugin-periscope",
+  "name": "eslint-plugin-custom",
   "version": "1.0.0",
-  "description": "Enforce best practices for Periscope",
+  "description": "Enforce best custom practices",
   "keywords": [
     "eslint",
     "eslintplugin",
@@ -10,8 +10,8 @@
   "author": "Dieter Oberkofler <dieter.oberkofler@gmail.com>",
   "repository": "",
   "scripts": {
-    "test": "./node_modules/.bin/mocha tests/*.js",
-    "lint": "eslint rules tests index.js"
+    "test": "./node_modules/.bin/mocha tests/**/*.js",
+    "lint": "eslint lib/**/*.js tests/**/*.js index.js"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
@@ -23,22 +23,5 @@
   "engines": {
     "node": ">=6"
   },
-  "license": "ISC",
-  "jest": {
-    "projects": [
-      {
-        "displayName": "test",
-        "testEnvironment": "node"
-      },
-      {
-        "runner": "jest-runner-eslint",
-        "displayName": "lint",
-        "testMatch": [
-          "<rootDir>/rules/**/*.js",
-          "<rootDir>/tests/**/*.js",
-          "<rootDir>/index.js"
-        ]
-      }
-    ]
-  }
+  "license": "ISC"
 }
