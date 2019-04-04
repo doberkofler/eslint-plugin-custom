@@ -1,0 +1,10 @@
+{
+  "plugins": ["jest"],
+  "extends": ["plugin:jest/recommended"],
+  "env": {
+    "jest/globals": true
+  },
+  "rules": {
+    "node/no-unpublished-require": "off"
+  }
+}
