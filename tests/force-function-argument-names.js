@@ -57,6 +57,11 @@ ruleTester.run('force-function-argument-names', rule, {
 
 		},
 		{
+			code: 'object.jsonGet("url", data);',
+			options: defaultOptions,
+
+		},
+		{
 			code: 'jsonGet("url");',
 			options: defaultOptions,
 
