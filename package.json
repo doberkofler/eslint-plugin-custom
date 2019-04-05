@@ -21,7 +21,11 @@
     "mocha": "^6.0.2"
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=10"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "main": "./index.js",
+  "peerDependencies": {
+    "eslint": ">=6.9.0"
+  }
 }
