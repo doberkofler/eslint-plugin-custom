@@ -66,45 +66,26 @@ const validCode = [
 ruleTester.run('force-function-argument-names', rule, {
 	valid: validCode.map(code => ({code, options})),
 	invalid: [
-		{
-			code: 'jsonGet("url", data);',
+		'jsonGet',
+		'jsonGetSuccess',
+		'jsonGetValidate',
+		'jsonPost',
+		'jsonPostSuccess',
+		'jsonPostValidate',
+		'jsonPostMessage',
+	].reduce((prev, curr) => {
+		prev.push({
+			code: `${curr}("url", data);`,
 			options,
-			errors: [{message: 'The second argument in the function "jsonGet" must always be named "para"'}]
-		},
-		{
-			code: 'jsonGetSuccess("url", data);',
+			errors: [{message: `The second argument in the function "${curr}" must always be named "para"`}]
+		});
+
+		prev.push({
+			code: `async function foo() {await ${curr}("url", data);}`,
 			options,
-			errors: [{message: 'The second argument in the function "jsonGetSuccess" must always be named "para"'}]
-		},
-		{
-			code: 'jsonGetValidate("url", data);',
-			options,
-			errors: [{message: 'The second argument in the function "jsonGetValidate" must always be named "para"'}]
-		},
-		{
-			code: 'jsonPost("url", data);',
-			options,
-			errors: [{message: 'The second argument in the function "jsonPost" must always be named "para"'}]
-		},
-		{
-			code: 'jsonPostSuccess("url", data);',
-			options,
-			errors: [{message: 'The second argument in the function "jsonPostSuccess" must always be named "para"'}]
-		},
-		{
-			code: 'jsonPostValidate("url", data);',
-			options,
-			errors: [{message: 'The second argument in the function "jsonPostValidate" must always be named "para"'}]
-		},
-		{
-			code: 'jsonPostMessage("url", data);',
-			options,
-			errors: [{message: 'The second argument in the function "jsonPostMessage" must always be named "para"'}]
-		},
-		{
-			code: 'async function foo() {await jsonGet("url", data);}',
-			options,
-			errors: [{message: 'The second argument in the function "jsonGet" must always be named "para"'}]
-		},
-	]
+			errors: [{message: `The second argument in the function "${curr}" must always be named "para"`}]
+		});
+	
+		return prev;
+	}, [])
 })
